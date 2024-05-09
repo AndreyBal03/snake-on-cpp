@@ -1,11 +1,12 @@
 #include<iostream>
 #include "Utils.h"
 #include<vector>
+#include<string>
 
 using namespace std;
 
 void show_board(vector<vector<int>> &board);
-char symbols(int num);
+string symbols(int num);
 
 
 int main(){
@@ -31,45 +32,39 @@ int main(){
   return 0;
 }
 
-char symbols(int num){
+string symbols(int num){
   switch (num) {
     
     case 0:
-      return '+';
+      return "\033[1;30m+\033[0m"; //Blue
       break;
 
     case 1:
-      return 'o';
+      return "\033[1;34mo\033[0m"; //Green
       break;
 
     case 2:
-      return '~';
+      return "\033[1;34m~\033[0m"; //Green
       break;
 
     case 3:
-      return '#';
+      return "\033[1;31m#\033[0m"; //Red
       break;
 
     default:
-      return '+';
+      return "\033[1;30m+\033[0m"; //Blue
       break;
   }
 }
 
 void show_board(vector<vector<int>> &board){
-
   int num = 0;
 
   for(int i = 0; i<10; i++){
-
     for (int j = 0; j<10; j++){
-
       num = board[i][j];
       cout << " " << symbols(num); 
-
     }
-
     cout << "\n\n";
   }
-
 }
